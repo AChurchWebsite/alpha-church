@@ -1,7 +1,29 @@
 [build]
-	publish = "exampleSite/public"
-	command = "cd exampleSite && hugo --gc --themeDir ../.."
+publish = "public"
+command = "hugo --mify
+[context.production.environment]
+HUGO_VERSION = "0.64"
+HUGO_ENV = "production"
+HUGO_ENABLEGITINFO = "true"
 
-[build.enviroment]
-	HUGO_VERSION = "0.60.1"
-	HUGO_THEME = "repo"
+[context.split1]
+command = "hugo --enableGitInfo"
+
+[context.split1.environment]
+HUGO_VERSION = "0.47"
+HUGO_ENV = "production"
+
+[context.deploy-preview]
+command = "hugo --buildFuture -b $DEPLOY_PRIME_URL"
+
+[context.deploy-preview.environment]
+HUGO_VERSION = "0.47"
+
+[context.branch-deploy]
+command = "hugo -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+HUGO_VERSION = "0.47"
+
+[context.next.environment]
+HUGO_ENABLEGITINFO = "true"
