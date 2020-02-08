@@ -10,7 +10,7 @@ HUGO_ENABLEGITINFO = "true"
 command = "hugo --enableGitInfo"
 
 [context.split1.environment]
-HUGO_VERSION = "0.47"
+HUGO_VERSION = "0.64"
 HUGO_ENV = "production"
 
 [context.deploy-preview]
